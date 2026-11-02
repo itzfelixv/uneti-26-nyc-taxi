@@ -49,7 +49,7 @@ st.write("Nhập thông tin chuyến đi, mô hình LightGBM đã huấn luyện
 
 bundle = load_bundle()
 
-with st.form("trip"):
+with st.container(border=True):
     st.subheader("Địa điểm")
     p_lat, p_lon = location_input("Điểm đón", "Quảng trường Thời đại (Times Square)")
     d_lat, d_lon = location_input("Điểm đến", "Phố Wall (Wall Street)")
@@ -67,7 +67,7 @@ with st.form("trip"):
     passengers = c5.number_input("Số hành khách", 1, 6, 1)
     vendor = c6.selectbox("Nhà vận tải (vendor_id)", [1, 2])
 
-    submitted = st.form_submit_button("Dự đoán", type="primary")
+    submitted = st.button("Dự đoán", type="primary")
 
 if submitted:
     dist_km = float(haversine(p_lat, p_lon, d_lat, d_lon))
